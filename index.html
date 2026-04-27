@@ -521,11 +521,13 @@
       var successBanner = document.getElementById('contact-success');
       if (successBanner) {
         successBanner.classList.remove('hidden');
+        successBanner.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        setTimeout(function() {
+          successBanner.classList.add('hidden');
+          var cleanedUrl = window.location.href.split('?')[0];
+          window.history.replaceState({}, document.title, cleanedUrl);
+        }, 7000);
       }
-      setTimeout(function() {
-        var cleanedUrl = window.location.href.split('?')[0];
-        window.history.replaceState({}, document.title, cleanedUrl);
-      }, 4000);
     }
   });
 </script>
